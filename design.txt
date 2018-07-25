@@ -1,0 +1,62 @@
+store
+    actions  - data
+        fetchData - type FETCH_DATA
+
+
+    middleware - data
+            function store=>next=>action=>{
+                switch(action.type){
+                    case:FETCH_DATA {
+                        next({showLoading:ture})
+                        apiCall().then(response=>{
+                            next({
+                                data:response
+                            });
+
+                        })
+                    }
+
+                    default:{
+                        next(action)
+                    }
+
+                }
+
+            }
+
+    reducers - data - FETCH_DATA=>{
+        payload = data
+
+        data will set to state
+
+    }
+    types - FETCHDATA
+    network - axios - (methods,params)
+
+component -
+            Display Text
+                - selectedText - string
+                - currentText - string
+                - unselectedText - string
+                - error - boolean
+
+            Input Text
+                - value - string
+                - onChange - function
+
+container -
+            TypeRacer
+              * error - boolean
+              * currentText - string
+              * selectedText - string
+              * unselectedText - string
+              * nextWord - string - on intialization it is the first word.
+              * onChange - function -
+                    --> checks value with next word and defines error
+                    --> When next word is complete clears value for textInput and
+                        add next word to selected text and defines next word from unselectedText
+
+
+
+
+
