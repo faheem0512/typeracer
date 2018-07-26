@@ -1,20 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {middleware, reducers} from "./store";
+import {createStore,combineReducers,applyMiddleware} from "redux";
+import {Provider} from "react-redux";
+import TypeRacer from "./views/TypeRacer";
+
+
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+
+    constructor(props) {
+      super(props);
+      let initialState = {};
+      this.store = createStore(
+          combineReducers({
+              ...reducers
+          }),
+          initialState,
+          applyMiddleware(...middleware)
+      );
+
+  }
+
+    render() {
+        return (
+            <Provider store={this.store}>
+                <TypeRacer />
+            </Provider>
+        );
   }
 }
 

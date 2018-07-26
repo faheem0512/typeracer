@@ -48,6 +48,7 @@ container -
             TypeRacer
               * error - boolean
               * currentText - string
+              * currentInputtedText - string
               * selectedText - string
               * unselectedText - string
               * nextWord - string - on intialization it is the first word.
