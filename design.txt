@@ -36,8 +36,8 @@ store
 component -
             Display Text
                 - selectedText - string
-                - currentText - string
                 - unselectedText - string
+                - currentTextCount - boolean
                 - error - boolean
 
             Input Text
@@ -47,7 +47,9 @@ component -
 container -
             TypeRacer
               * error - boolean
+              * errors - number
               * currentText - string
+              * currentTextCount - number
               * currentInputtedText - string
               * selectedText - string
               * unselectedText - string
@@ -59,5 +61,8 @@ container -
 
 
 
+            Summary -
+                - errors - number
+                - totalWordsTyped - number
 
 
